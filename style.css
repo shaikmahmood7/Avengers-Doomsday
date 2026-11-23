@@ -1,0 +1,433 @@
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #030605;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+
+    background:
+        radial-gradient(ellipse at 50% 45%,
+            rgba(14, 74, 39, 0.45),
+            transparent 55%),
+        radial-gradient(ellipse at 10% 80%,
+            rgba(105, 16, 12, 0.24),
+            transparent 45%),
+        linear-gradient(135deg,
+            #020403,
+            #07150d,
+            #020403);
+
+    animation: atmosphere 8s ease-in-out infinite alternate;
+}
+
+@keyframes atmosphere {
+    from {
+        filter: brightness(0.8);
+    }
+    to {
+        filter: brightness(1.25);
+    }
+}
+
+/* DARK OVERLAY */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3),
+            transparent 45%,
+            rgba(0, 0, 0, 0.8)
+        );
+
+    pointer-events: none;
+}
+
+/* PARTICLES */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    bottom: -10px;
+
+    width: 3px;
+    height: 3px;
+
+    background: #76ff9a;
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px #35ff75;
+
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    85% {
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: auto;
+    padding: 30px 7%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 3px;
+
+    color: #ffffff;
+}
+
+.status {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #a5c6ae;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4cff7a;
+    box-shadow: 0 0 12px #4cff7a;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* HERO */
+
+.hero {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 90px 0;
+}
+
+.eyebrow {
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: #8fbd9d;
+    margin-bottom: 30px;
+}
+
+/* MOVIE TITLE */
+
+.movie-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(45px, 8vw, 105px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 4px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 20px rgba(55, 255, 116, 0.2),
+        0 0 55px rgba(0, 255, 100, 0.12);
+}
+
+.movie-title span {
+    display: block;
+
+    color: #b4d9bd;
+
+    background: linear-gradient(
+        90deg,
+        #668d70,
+        #e2ffe6,
+        #557e60
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* DIVIDER */
+
+.divider {
+    width: 100px;
+    height: 2px;
+
+    margin: 30px 0;
+
+    background: #57ff83;
+    box-shadow: 0 0 15px #57ff83;
+}
+
+/* TEXT */
+
+.subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: #d6d6d6;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 19px;
+    color: #9daaa1;
+    letter-spacing: 1px;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* COUNTDOWN */
+
+.countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(10px, 3vw, 30px);
+    margin: 55px 0 35px;
+}
+
+.time-box {
+    width: clamp(65px, 12vw, 130px);
+    padding: 20px 5px;
+
+    background: rgba(13, 35, 21, 0.55);
+    border: 1px solid rgba(101, 255, 143, 0.25);
+
+    backdrop-filter: blur(12px);
+
+    border-radius: 8px;
+
+    box-shadow:
+        inset 0 0 20px rgba(65, 255, 111, 0.04),
+        0 0 25px rgba(0, 255, 100, 0.05);
+
+    transition: 0.3s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-8px);
+    border-color: #57ff83;
+
+    box-shadow:
+        0 0 25px rgba(65, 255, 111, 0.2);
+}
+
+.number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(23px, 5vw, 48px);
+    font-weight: 800;
+
+    color: #aaffbb;
+
+    text-shadow: 0 0 18px rgba(78, 255, 125, 0.6);
+}
+
+.label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #9daaa1;
+    margin-top: 10px;
+}
+
+.separator {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
+    color: #5aff83;
+    animation: blink 1s infinite;
+}
+
+/* RELEASE DATE */
+
+.release-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.release-text span {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #8da994;
+}
+
+.release-text strong {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 17px;
+    letter-spacing: 3px;
+    color: #ffffff;
+}
+
+/* BOTTOM */
+
+.bottom-line {
+    margin-top: 50px;
+    color: #a4b5a8;
+    font-size: 11px;
+    letter-spacing: 5px;
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #66736a;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 25px 18px;
+    }
+
+    .logo {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .status {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        padding: 75px 0;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .movie-title {
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .countdown {
+        gap: 6px;
+        margin: 40px 0 30px;
+    }
+
+    .time-box {
+        padding: 17px 2px;
+        border-radius: 5px;
+    }
+
+    .label {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .separator {
+        font-size: 17px;
+    }
+
+    .release-text strong {
+        font-size: 13px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+        font-size: 8px;
+    }
+}
+
+
+
+
+
+.release-message {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(22px, 5vw, 45px);
+    color: #aaffbb;
+    text-shadow: 0 0 25px #4cff7a;
+    animation: blink 1.5s infinite;
+}
